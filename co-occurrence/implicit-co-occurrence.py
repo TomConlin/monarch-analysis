@@ -38,7 +38,7 @@ for doc in get_solr_docs(solr, params):
         closures = [pheno[3:] for pheno in doc['object_closure'] if pheno.startswith("HP:")]
         closure_map[doc['subject']] = closures
 
-closure_list = [closures for closures in closure_map.values()]
+closure_list = [set(closures) for closures in closure_map.values()]
 closure_map = None
 
 # Get co-occurring terms in a list of lists, credit
